@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <Windows.h>
 #include <iomanip>
+#include "Array.h"
 
 
 int main()
@@ -39,5 +40,21 @@ int main()
             bytes[3] += 1;
         }
         std::cout << "\n";
+    }
+
+    Array* lesgo = new Array(60);
+
+    std::cout << "size of unit32: " << sizeof(uint32) << "\n";
+    puts("Arreglo de uint32");
+
+   // std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<uint32>(static_cast<unsigned char>(*"\xF0\x9F\x90\x88")) << "\n";
+
+    lesgo->Clear();
+    lesgo->Set(5, 123456);//static_cast<uint32>(*"\xF0\x9F\x90\x88"));
+    lesgo->Set(6,static_cast<uint32>(static_cast<unsigned char>(*"\xF0\x9F\x90\x88")));
+
+    for (int i = 0; i < lesgo->SizeGet(); i++)
+    {
+        std::cout << lesgo->Get(i) << "\n";
     }
 }
