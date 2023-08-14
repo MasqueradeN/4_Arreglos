@@ -26,7 +26,9 @@ public:
 		}
 	}
 
+	uint32 operator[](size_t index);
 	uint32 Get(size_t index);
+	void Set(size_t index, const char* bytes);
 	void Set(size_t index, uint32 newValue);
 	size_t SizeGet();
 	void Clear();

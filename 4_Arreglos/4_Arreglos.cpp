@@ -2,7 +2,10 @@
 #include <Windows.h>
 #include <iomanip>
 #include "Array.h"
+#include "StringArray.h"
+#include "Entity.h"
 
+typedef StringArray<std::string> stringersArray;
 
 int main()
 {
@@ -44,14 +47,40 @@ int main()
 
     Array* lesgo = new Array(60);
 
+    std::cout << "Arrays de enteros\n";
+    StringArray<int> *enteros = new StringArray<int>(10);
+
+    (*enteros)[0] = 12;
+    (*enteros)[1] = 5;
+    (*enteros)[2] = 69;
+    enteros->printValues();
+
+    std::cout << "Arrays de strings\n";
+    stringersArray strings = stringersArray(20);
+    strings[0] = "Ayoooo";
+    strings[1] = "Brooouuus";
+    strings.printValues();
+    strings.resize(5);
+    strings.printValues();
+
+    StringArray<Entity> entities = StringArray<Entity>(10);
+
+    entities.printValues();
+
     std::cout << "size of unit32: " << sizeof(uint32) << "\n";
+    //std::cout << "size of string: " << sizeof(string) << "\n";
     puts("Arreglo de uint32");
+    //puts("Arreglo de Strings");
 
    // std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<uint32>(static_cast<unsigned char>(*"\xF0\x9F\x90\x88")) << "\n";
+    const char* gato = "\xF0\x9F\x90\x88";
 
     lesgo->Clear();
-    lesgo->Set(5, 123456);//static_cast<uint32>(*"\xF0\x9F\x90\x88"));
-    lesgo->Set(6,static_cast<uint32>(static_cast<unsigned char>(*"\xF0\x9F\x90\x88")));
+    lesgo->Set(5, gato);//static_cast<uint32>(*"\xF0\x9F\x90\x88"));
+    lesgo->Set(6,65536);
+    lesgo->Set(7, "\xF0\x9F\x90\x88");
+
+    lesgo[0] = *"2";
 
     for (int i = 0; i < lesgo->SizeGet(); i++)
     {
