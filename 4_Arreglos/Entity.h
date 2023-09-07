@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <random>
+#include "StringArray.h"
 
 class Entity
 {
@@ -14,24 +15,17 @@ public:
 		health = 0;
 	}
 
-	Entity(std::string names)
-	{
-		health = 100;
-		std::string e = "Entity";
-		std::random_device randomizer;
-		std::mt19937 gen(randomizer);
-		std::uniform_int_distribution<int> dist(10000, 99999);
-		name = e.append(std::to_string(dist(gen)));
-	}
-
-	~Entity()
-	{
-
-	}
-
 	const char* toString()
 	{
 		return name.c_str();
 	}
 };
 
+template<>
+inline void StringArray<Entity>::listContents()
+{
+	for (int i = 0; i < bruhSize; i++)
+	{
+		std::cout << "[" << i << "] = " << arrayz[i].toString() << "\n";
+	}
+}

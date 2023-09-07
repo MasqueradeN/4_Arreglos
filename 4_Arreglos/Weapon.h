@@ -8,28 +8,20 @@ public:
 	int damage;
 	int Ammo;
 
-	Weapon()
-	{
-		name = "weapon";
-		Ammo = 0;
-		damage = 0;
-		type = EType::ranged;
-	}
+	Weapon();
 
-	Weapon(const char* _name, int _ammo, EType _type, int _damage)
-	{
-		name = _name;
-		Ammo = _ammo;
-		type = _type;
-		damage = _damage;
-	}
-
-	//~Weapon()
-	//{
-
-	//}
+	Weapon(const char* _name, int _ammo, EType _type, int _damage);
 
 	void attack(Entity entiti);
 	void giveAmmo(int newAmmo);
+
 };
 
+template<>
+inline void StringArray<Weapon>::listContents()
+{
+	for (int i = 0; i < bruhSize; i++)
+	{
+		std::cout << "Weapon: [" << i << "] " << arrayz[i].toString() << "(" << arrayz[i].type << ")" << "\n";
+	}
+}

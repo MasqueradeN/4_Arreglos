@@ -17,6 +17,12 @@ public:
 		arrayz = new uint32(bruhSize);
 	}
 
+	Array()
+	{
+		bruhSize = 0;
+		arrayz = nullptr;
+	}
+
 	~Array()
 	{
 		if (arrayz != nullptr)

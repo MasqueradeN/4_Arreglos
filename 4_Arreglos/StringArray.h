@@ -2,7 +2,9 @@
 #include <cstdint>
 #include <string.h>
 #include <iostream>
-#include "Entity.h"
+//#include "Entity.h"
+//#include "Character.h"
+//#include "Weapon.h"
 
 template <typename T>
 
@@ -14,10 +16,16 @@ class StringArray
 
 public:
 
+	StringArray()
+	{
+		bruhSize = 0;
+		arrayz = nullptr;
+	}
+
 	StringArray(size_t newsize)
 	{
 		bruhSize = newsize;
-		arrayz = new T[bruhSize];
+		arrayz = new T[newsize];
 	}
 
 	~StringArray()
@@ -69,7 +77,7 @@ public:
 		return sizeof(T);
 	}
 
-	void printValues()
+	void listContents()
 	{
 		for (int i = 0; i < bruhSize; i++)
 		{
@@ -77,13 +85,12 @@ public:
 		}
 	}
 
-};
-template<>
-inline void StringArray<Entity>::printValues()
-{
-	for (int i = 0; i < bruhSize; i++)
+	T Add(T newItem)
 	{
-		std::cout << "[" << i << "] = " << arrayz[i].toString() << "\n";
+		resize(bruhSize + 1);
+		arrayz[bruhSize - 1] = newItem;
+		return newItem;
 	}
-}
+};
+
 

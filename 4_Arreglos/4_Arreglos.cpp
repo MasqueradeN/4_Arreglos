@@ -4,6 +4,7 @@
 #include "Array.h"
 #include "StringArray.h"
 #include "Entity.h"
+#include "Character.h"
 
 typedef StringArray<std::string> stringersArray;
 
@@ -53,19 +54,19 @@ int main()
     (*enteros)[0] = 12;
     (*enteros)[1] = 5;
     (*enteros)[2] = 69;
-    enteros->printValues();
+    enteros->listContents();
 
     std::cout << "Arrays de strings\n";
     stringersArray strings = stringersArray(20);
-    strings[0] = "Ayoooo";
-    strings[1] = "Brooouuus";
-    strings.printValues();
+    //strings[0] = "Ayoooo";
+    //strings[1] = "Brooouuus";
+    strings.listContents();
     strings.resize(5);
-    strings.printValues();
+    strings.listContents();
 
     StringArray<Entity> entities = StringArray<Entity>(10);
 
-    entities.printValues();
+    entities.listContents();
 
     std::cout << "size of unit32: " << sizeof(uint32) << "\n";
     //std::cout << "size of string: " << sizeof(string) << "\n";
@@ -80,10 +81,23 @@ int main()
     lesgo->Set(6,65536);
     lesgo->Set(7, "\xF0\x9F\x90\x88");
 
-    lesgo[0] = *"2";
+    //lesgo[0] = *"2";
 
     for (int i = 0; i < lesgo->SizeGet(); i++)
     {
         std::cout << lesgo->Get(i) << "\n";
     }
+
+    //StringArray<Character> characters = StringArray<Character>();
+    //Character NPC = Character("El Bobes ponja");
+    //NPC.SetType(Character::EChartype::npc);
+    //characters.Add(NPC);
+
+    //Character Player = Character("Yo merengues");
+    //Player.SetType(Character::EChartype::player);
+    //Weapon weap = Weapon("Zas", 0, Weapon::melee, 100000);
+    //Player.GiveWeapon(weap);
+    //characters.Add(Player);
+
+    //characters.listContents();
 }
